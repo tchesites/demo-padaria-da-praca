@@ -1,0 +1,154 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Section from '../components/Section.astro';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
+import { categorias, precoBRL } from '../data/cardapio.js';
+---
+
+<BaseLayout
+  title="Cardápio"
+  description="O cardápio da Padaria da Praça: pães de fermentação natural, confeitaria, salgados e café da manhã, feitos todo dia."
+>
+  <Section tone="escuro">
+    <div class="hero">
+      <p class="hero__eyebrow">Cardápio</p>
+      <h1 class="hero__title">O que sai do nosso forno</h1>
+      <p class="hero__text">
+        Pães, confeitaria, salgados e café da manhã — feito todo dia, aqui na Praça.
+      </p>
+    </div>
+  </Section>
+
+  <Section tone="claro">
+    <div class="cardapio">
+      {categorias.map((cat) => (
+        <div class="categoria">
+          <h2 class="categoria__nome">{cat.nome}</h2>
+          <ul class="categoria__lista">
+            {cat.itens.map((item) => (
+              <li class="item">
+                <div class="item__info">
+                  <h3 class="item__nome">{item.nome}</h3>
+                  <p class="item__desc">{item.descricao}</p>
+                </div>
+                <p class="item__preco">
+                  {precoBRL(item.preco)} <span>{item.unidade}</span>
+                </p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </Section>
+
+  <Section tone="escuro">
+    <div class="cta">
+      <h2 class="cta__titulo">Encomende pelo WhatsApp</h2>
+      <p class="cta__texto">
+        Manda a lista que a gente separa pra ti — retirada no balcão ou entrega aqui
+        no bairro.
+      </p>
+      <WhatsAppButton label="Encomendar agora" message="Olá! Queria encomendar: " />
+    </div>
+  </Section>
+</BaseLayout>
+
+<style>
+  .hero {
+    max-width: 44rem;
+  }
+
+  .hero__eyebrow {
+    color: var(--trigo);
+    font-weight: 700;
+    font-size: var(--text-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 1rem;
+  }
+
+  .hero__title {
+    font-size: var(--text-2xl);
+    color: var(--creme);
+  }
+
+  .hero__text {
+    margin-top: 1.25rem;
+    color: rgba(251, 244, 230, 0.85);
+    font-size: var(--text-lg);
+  }
+
+  .cardapio {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem 3.5rem;
+  }
+
+  .categoria__nome {
+    font-size: var(--text-xl);
+    padding-bottom: 0.75rem;
+    border-bottom: 3px solid var(--dourado);
+    margin-bottom: 0.5rem;
+  }
+
+  .categoria__lista {
+    list-style: none;
+    padding: 0;
+  }
+
+  .item {
+    display: flex;
+    gap: 1.5rem;
+    align-items: baseline;
+    justify-content: space-between;
+    padding-block: 1rem;
+    border-bottom: 1px solid var(--borda);
+  }
+
+  .item__nome {
+    font-size: var(--text-lg);
+    margin-bottom: 0.25rem;
+  }
+
+  .item__desc {
+    color: var(--texto-suave);
+    font-size: var(--text-sm);
+  }
+
+  .item__preco {
+    white-space: nowrap;
+    font-family: var(--font-display);
+    font-weight: 700;
+    color: var(--marrom);
+  }
+
+  .item__preco span {
+    font-family: var(--font-body);
+    font-weight: 400;
+    font-size: var(--text-sm);
+    color: var(--texto-suave);
+  }
+
+  .cta {
+    max-width: 40rem;
+  }
+
+  .cta__titulo {
+    color: var(--trigo);
+    font-size: var(--text-xl);
+    margin-bottom: 1rem;
+  }
+
+  .cta__texto {
+    color: rgba(251, 244, 230, 0.85);
+    margin-bottom: 1.75rem;
+  }
+
+  @media (max-width: 52rem) {
+    .cardapio {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+  }
+</style>
