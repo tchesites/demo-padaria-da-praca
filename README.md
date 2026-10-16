@@ -38,5 +38,6 @@ horário e telefone são fictícios.
 
 ## Deploy
 
-Projeto demonstrativo publicado em host gratuito. O rodapé traz o aviso
-"Projeto demonstrativo — desenvolvido pela Tchê Sites".
+**Pendente** (Task 7 do plano): publicar em host gratuito. URL prevista
+`https://padaria-da-praca.vercel.app` (confirmar no deploy). O rodapé traz o
+aviso "Projeto demonstrativo — desenvolvido pela Tchê Sites".

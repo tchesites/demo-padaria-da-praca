@@ -60,8 +60,9 @@ p {
 }
 
 :focus-visible {
-  outline: 3px solid var(--dourado);
-  outline-offset: 3px;
+  outline: 2px solid var(--marrom-escuro);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px var(--trigo);
   border-radius: var(--radius-sm);
 }
 
