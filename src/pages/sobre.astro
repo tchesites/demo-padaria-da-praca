@@ -1,0 +1,172 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Section from '../components/Section.astro';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
+
+const marcos = [
+  {
+    titulo: 'Massa de véspera',
+    texto:
+      'O pão começa ontem: a massa descansa a noite inteira pra ganhar sabor e leveza. Nada de pressa.',
+  },
+  {
+    titulo: 'Forno quente todo dia',
+    texto:
+      'De madrugada o forno acende e o cheiro toma a rua. As fornadas saem ao longo do dia, sempre fresquinhas.',
+  },
+  {
+    titulo: 'Feito pro bairro',
+    texto:
+      'A gente conhece quem entra pela porta. É a padaria da esquina, do jeito que a vizinhança merece.',
+  },
+];
+---
+
+<BaseLayout
+  title="Sobre"
+  description="A história da Padaria da Praça: uma padaria de bairro, feita com calma, com pão de fermentação natural e forno quente todo dia."
+>
+  <Section tone="escuro">
+    <div class="hero">
+      <p class="hero__eyebrow">Sobre a Praça</p>
+      <h1 class="hero__title">Uma padaria de bairro, feita com calma</h1>
+      <p class="hero__text">
+        Desde o primeiro dia, a mesma vontade: fazer o pão que a gente gostaria de
+        comer — simples, honesto e sem pressa.
+      </p>
+    </div>
+  </Section>
+
+  <Section tone="claro">
+    <div class="historia">
+      <div class="historia__texto">
+        <p>
+          A Padaria da Praça começou numa esquina movimentada do Centro, com um forno,
+          uma mesa de mármore e a ideia fixa de fazer pão do zero. Nada de massa pronta:
+          farinha, água, sal e tempo.
+        </p>
+        <p>
+          Com o passar dos anos, vieram a confeitaria, os salgados e o café passado na
+          hora. Mas a essência continua a mesma: acordar cedo, acender o forno e receber
+          a vizinhança com o cheiro de pão quentinho.
+        </p>
+        <p>
+          A gente acredita que padaria é lugar de encontro. Por isso, aqui dá-se tempo ao
+          café, à conversa e ao pão — no ritmo que a vida pede.
+        </p>
+      </div>
+      <aside class="historia__aside" aria-hidden="true">
+        <span class="historia__emoji">🥖</span>
+        <p class="historia__legenda">Feito à mão, todos os dias.</p>
+      </aside>
+    </div>
+  </Section>
+
+  <Section tone="escuro">
+    <div class="section-head">
+      <h2>O que a gente faz questão</h2>
+    </div>
+    <div class="marcos">
+      {marcos.map((m) => (
+        <div class="marco">
+          <h3 class="marco__titulo">{m.titulo}</h3>
+          <p class="marco__texto">{m.texto}</p>
+        </div>
+      ))}
+    </div>
+    <div class="cta">
+      <WhatsAppButton label="Falar com a gente" />
+    </div>
+  </Section>
+</BaseLayout>
+
+<style>
+  .hero {
+    max-width: 44rem;
+  }
+
+  .hero__eyebrow {
+    color: var(--trigo);
+    font-weight: 700;
+    font-size: var(--text-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 1rem;
+  }
+
+  .hero__title {
+    font-size: var(--text-2xl);
+    color: var(--creme);
+  }
+
+  .hero__text {
+    margin-top: 1.25rem;
+    color: rgba(251, 244, 230, 0.85);
+    font-size: var(--text-lg);
+  }
+
+  .historia {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .historia__texto p {
+    color: var(--texto);
+    margin-bottom: 1.25rem;
+    font-size: var(--text-lg);
+  }
+
+  .historia__aside {
+    background-color: var(--marrom);
+    border-radius: var(--radius);
+    padding: 3rem 2rem;
+    text-align: center;
+  }
+
+  .historia__emoji {
+    font-size: 4rem;
+    line-height: 1;
+  }
+
+  .historia__legenda {
+    margin-top: 1rem;
+    color: var(--trigo);
+    font-family: var(--font-display);
+    font-weight: 700;
+  }
+
+  .marcos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .marco {
+    padding-top: 1.25rem;
+    border-top: 3px solid var(--dourado);
+  }
+
+  .marco__titulo {
+    color: var(--trigo);
+    font-size: var(--text-lg);
+    margin-bottom: 0.5rem;
+  }
+
+  .marco__texto {
+    color: rgba(251, 244, 230, 0.85);
+  }
+
+  .cta {
+    margin-top: 2.5rem;
+  }
+
+  @media (max-width: 52rem) {
+    .historia,
+    .marcos {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+</style>

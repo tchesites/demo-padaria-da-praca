@@ -1,0 +1,110 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Section from '../components/Section.astro';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
+import { negocio } from '../data/negocio.js';
+---
+
+<BaseLayout
+  title="Contato"
+  description="Fale com a Padaria da Praça: endereço, horário de funcionamento e pedidos pelo WhatsApp."
+>
+  <Section tone="escuro">
+    <div class="hero">
+      <p class="hero__eyebrow">Contato</p>
+      <h1 class="hero__title">Fala com a gente</h1>
+      <p class="hero__text">
+        Encomendas, dúvidas ou só pra saber o que saiu do forno hoje — o WhatsApp é o
+        caminho mais rápido.
+      </p>
+    </div>
+  </Section>
+
+  <Section tone="claro">
+    <div class="contato">
+      <div class="contato__bloco">
+        <h2 class="contato__titulo">Endereço</h2>
+        <p class="contato__linha">{negocio.endereco}</p>
+        <a class="btn btn--ghost" href={negocio.mapaUrl} target="_blank" rel="noopener">
+          Ver no mapa
+        </a>
+      </div>
+
+      <div class="contato__bloco">
+        <h2 class="contato__titulo">Horário</h2>
+        {negocio.horarios.map((h) => (
+          <p class="contato__linha">
+            <strong>{h.dias}:</strong> {h.horas}
+          </p>
+        ))}
+      </div>
+
+      <div class="contato__bloco">
+        <h2 class="contato__titulo">Pedidos</h2>
+        <p class="contato__linha">WhatsApp {negocio.whatsappDisplay}</p>
+        <p class="contato__linha">@padariadapraca</p>
+        <div class="contato__acao">
+          <WhatsAppButton label="Chamar no WhatsApp" />
+        </div>
+      </div>
+    </div>
+  </Section>
+</BaseLayout>
+
+<style>
+  .hero {
+    max-width: 44rem;
+  }
+
+  .hero__eyebrow {
+    color: var(--trigo);
+    font-weight: 700;
+    font-size: var(--text-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 1rem;
+  }
+
+  .hero__title {
+    font-size: var(--text-2xl);
+    color: var(--creme);
+  }
+
+  .hero__text {
+    margin-top: 1.25rem;
+    color: rgba(251, 244, 230, 0.85);
+    font-size: var(--text-lg);
+  }
+
+  .contato {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+  }
+
+  .contato__bloco {
+    padding-top: 1.25rem;
+    border-top: 3px solid var(--dourado);
+  }
+
+  .contato__titulo {
+    font-size: var(--text-lg);
+    margin-bottom: 1rem;
+  }
+
+  .contato__linha {
+    color: var(--texto-suave);
+    margin-bottom: 0.5rem;
+  }
+
+  .contato__acao {
+    margin-top: 1.25rem;
+  }
+
+  @media (max-width: 52rem) {
+    .contato {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+</style>
