@@ -1,0 +1,98 @@
+---
+import { negocio } from '../data/negocio.js';
+
+const ano = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__col">
+      <span class="footer__brand">{negocio.nome}</span>
+      <p class="footer__slogan">{negocio.slogan}</p>
+    </div>
+
+    <div class="footer__col">
+      <h3 class="footer__title">Onde e quando</h3>
+      <p class="footer__line">{negocio.endereco}</p>
+      {negocio.horarios.map((h) => (
+        <p class="footer__line">
+          <strong>{h.dias}:</strong> {h.horas}
+        </p>
+      ))}
+    </div>
+
+    <div class="footer__col">
+      <h3 class="footer__title">Contato</h3>
+      <p class="footer__line">WhatsApp {negocio.whatsappDisplay}</p>
+      <p class="footer__line">@padariadapraca</p>
+    </div>
+  </div>
+
+  <div class="container footer__base">
+    <p>© {ano} {negocio.nome} · negócio fictício, sem fins comerciais.</p>
+    <p>
+      Projeto demonstrativo — desenvolvido pela
+      <a href="https://tchesites.com.br" target="_blank" rel="noopener">Tchê Sites</a>.
+    </p>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background-color: var(--marrom-escuro);
+    color: rgba(251, 244, 230, 0.85);
+    padding-block: clamp(2.5rem, 6vw, 4rem) 1.5rem;
+    font-size: var(--text-sm);
+  }
+
+  .footer__inner {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .footer__brand {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: var(--text-lg);
+    color: var(--trigo);
+  }
+
+  .footer__slogan {
+    margin-top: 0.5rem;
+    max-width: 28ch;
+  }
+
+  .footer__title {
+    color: var(--trigo);
+    font-size: var(--text-base);
+    margin-bottom: 0.6rem;
+  }
+
+  .footer__line {
+    color: rgba(251, 244, 230, 0.75);
+  }
+
+  .footer__base {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin-top: 2.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid rgba(251, 244, 230, 0.15);
+    color: rgba(251, 244, 230, 0.6);
+  }
+
+  .footer__base a {
+    color: var(--trigo);
+    text-decoration: underline;
+  }
+
+  @media (max-width: 46rem) {
+    .footer__inner {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+  }
+</style>

@@ -1,0 +1,30 @@
+:root {
+  /* Cores — identidade quente da Padaria da Praça */
+  --marrom: #4a2c17;
+  --marrom-escuro: #2b1a0d;
+  --creme: #fbf4e6;
+  --branco: #ffffff;
+  --trigo: #e7c079;
+  --dourado: #c98a2b;
+  --dourado-escuro: #a96f1c;
+  --texto: #2b1d12;
+  --texto-suave: #6e5a48;
+  --borda: rgba(43, 29, 18, 0.12);
+
+  /* Tipografia */
+  --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-body: 'Nunito Sans', system-ui, -apple-system, sans-serif;
+
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.6rem;
+  --text-2xl: clamp(2rem, 5vw, 3.25rem);
+
+  /* Layout */
+  --container: 1120px;
+  --gutter: 1.25rem;
+  --section-y: clamp(3.5rem, 8vw, 6rem);
+  --radius: 14px;
+  --radius-sm: 8px;
+}

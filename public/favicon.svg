@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Padaria da Praça">
+  <rect width="64" height="64" rx="14" fill="#4A2C17" />
+  <path d="M14 40c6-14 30-14 36 0 1 2-1 4-4 4H18c-3 0-5-2-4-4z" fill="#E7C079" />
+  <path d="M22 30c2-2 5-2 7 0M31 26c2-2 5-2 7 0M40 30c2-2 5-2 7 0" stroke="#C98A2B" stroke-width="2.5" stroke-linecap="round" fill="none" />
+</svg>
