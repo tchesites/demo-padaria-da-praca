@@ -1,12 +1,311 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Section from '../components/Section.astro';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
+import { negocio } from '../data/negocio.js';
+import { destaques, precoBRL } from '../data/cardapio.js';
+
+const valores = [
+  {
+    titulo: 'Feito na hora',
+    texto: 'O pão sai do forno ao longo do dia — chega quentinho quando tu chega.',
+  },
+  {
+    titulo: 'Fermentação natural',
+    texto: 'Massa de véspera, sem pressa. Sabor e textura que a pressa não dá.',
+  },
+  {
+    titulo: 'Retirada e entrega',
+    texto: 'Pede pelo WhatsApp, retira no balcão ou recebe em casa aqui no bairro.',
+  },
+];
 ---
 
 <BaseLayout title="Início">
-  <section class="section section--creme">
-    <div class="container">
-      <h1>Padaria da Praça</h1>
-      <p>Página inicial em construção.</p>
+  <Section tone="escuro">
+    <div class="hero">
+      <p class="hero__eyebrow">Padaria artesanal · Sapucaia do Sul</p>
+      <h1 class="hero__title">{negocio.slogan}</h1>
+      <p class="hero__text">
+        Pão de fermentação natural, confeitaria de casa e café passado na hora,
+        todo dia no Centro.
+      </p>
+      <div class="hero__actions">
+        <WhatsAppButton label="Pedir pelo WhatsApp" />
+        <a class="btn btn--ghost hero__ghost" href="/cardapio/">Ver o cardápio</a>
+      </div>
     </div>
-  </section>
+  </Section>
+
+  <Section tone="claro">
+    <div class="section-head">
+      <h2>Por que a Praça</h2>
+      <p>Três coisas de que a gente não abre mão.</p>
+    </div>
+    <div class="valores">
+      {valores.map((v) => (
+        <div class="valor">
+          <h3 class="valor__titulo">{v.titulo}</h3>
+          <p class="valor__texto">{v.texto}</p>
+        </div>
+      ))}
+    </div>
+  </Section>
+
+  <Section tone="escuro">
+    <div class="sobre">
+      <div class="sobre__texto">
+        <h2>Uma padaria de bairro, feita com calma</h2>
+        <p>
+          A Padaria da Praça nasceu da vontade de ter, ali na esquina, o pão de
+          verdade: massa de véspera, forno quente e aquele cheiro que faz a rua
+          parar. Todo dia a mesma rotina, com o mesmo cuidado.
+        </p>
+        <a class="btn btn--ghost hero__ghost" href="/sobre/">Conheça a história</a>
+      </div>
+      <ul class="sobre__lista">
+        {negocio.horarios.map((h) => (
+          <li>
+            <span class="sobre__dias">{h.dias}</span>
+            <span class="sobre__horas">{h.horas}</span>
+          </li>
+        ))}
+        <li>
+          <span class="sobre__dias">Endereço</span>
+          <span class="sobre__horas">{negocio.endereco}</span>
+        </li>
+      </ul>
+    </div>
+  </Section>
+
+  <Section tone="claro">
+    <div class="section-head">
+      <h2>Saídos do forno</h2>
+      <p>Alguns favoritos da casa — o cardápio completo tá logo ali.</p>
+    </div>
+    <div class="destaques">
+      {destaques.map((item) => (
+        <article class="destaque">
+          <h3 class="destaque__nome">{item.nome}</h3>
+          <p class="destaque__desc">{item.descricao}</p>
+          <p class="destaque__preco">
+            {precoBRL(item.preco)} <span>{item.unidade}</span>
+          </p>
+        </article>
+      ))}
+    </div>
+    <div class="destaques__cta">
+      <a class="btn btn--solid" href="/cardapio/">Ver cardápio completo</a>
+    </div>
+  </Section>
+
+  <Section tone="escuro" id="onde">
+    <div class="onde">
+      <div>
+        <h2>Onde e quando</h2>
+        <p class="onde__endereco">{negocio.endereco}</p>
+        {negocio.horarios.map((h) => (
+          <p class="onde__linha">
+            <strong>{h.dias}:</strong> {h.horas}
+          </p>
+        ))}
+      </div>
+      <div class="onde__acoes">
+        <WhatsAppButton label="Fazer um pedido" />
+        <a class="btn btn--ghost hero__ghost" href="/contato/">Falar com a gente</a>
+      </div>
+    </div>
+  </Section>
 </BaseLayout>
+
+<style>
+  .hero {
+    max-width: 46rem;
+  }
+
+  .hero__eyebrow {
+    color: var(--trigo);
+    font-weight: 700;
+    font-size: var(--text-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 1rem;
+  }
+
+  .hero__title {
+    font-size: var(--text-2xl);
+    color: var(--creme);
+  }
+
+  .hero__text {
+    margin-top: 1.25rem;
+    color: rgba(251, 244, 230, 0.85);
+    font-size: var(--text-lg);
+  }
+
+  .hero__actions {
+    margin-top: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .hero__ghost {
+    color: var(--creme);
+    border-color: rgba(251, 244, 230, 0.4);
+  }
+
+  .hero__ghost:hover {
+    color: var(--trigo);
+    border-color: var(--trigo);
+    background-color: rgba(251, 244, 230, 0.06);
+  }
+
+  .valores {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .valor {
+    padding-top: 1.25rem;
+    border-top: 3px solid var(--dourado);
+  }
+
+  .valor__titulo {
+    font-size: var(--text-lg);
+    margin-bottom: 0.5rem;
+  }
+
+  .valor__texto {
+    color: var(--texto-suave);
+  }
+
+  .sobre {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .sobre__texto h2 {
+    color: var(--trigo);
+    font-size: var(--text-xl);
+    margin-bottom: 1rem;
+  }
+
+  .sobre__texto p {
+    color: rgba(251, 244, 230, 0.85);
+    margin-bottom: 1.5rem;
+  }
+
+  .sobre__lista {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 1rem;
+  }
+
+  .sobre__lista li {
+    display: grid;
+    gap: 0.2rem;
+    padding-bottom: 0.85rem;
+    border-bottom: 1px solid rgba(251, 244, 230, 0.15);
+  }
+
+  .sobre__dias {
+    color: var(--trigo);
+    font-weight: 700;
+  }
+
+  .sobre__horas {
+    color: rgba(251, 244, 230, 0.8);
+  }
+
+  .destaques {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .destaque {
+    background-color: var(--branco);
+    border: 1px solid var(--borda);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .destaque__nome {
+    font-size: var(--text-lg);
+    margin-bottom: 0.5rem;
+  }
+
+  .destaque__desc {
+    color: var(--texto-suave);
+    font-size: var(--text-sm);
+    flex: 1;
+  }
+
+  .destaque__preco {
+    margin-top: 1rem;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: var(--text-lg);
+    color: var(--marrom);
+  }
+
+  .destaque__preco span {
+    font-family: var(--font-body);
+    font-weight: 400;
+    font-size: var(--text-sm);
+    color: var(--texto-suave);
+  }
+
+  .destaques__cta {
+    margin-top: 2.5rem;
+  }
+
+  .onde {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 2.5rem;
+    align-items: center;
+  }
+
+  .onde h2 {
+    color: var(--trigo);
+    font-size: var(--text-xl);
+    margin-bottom: 1rem;
+  }
+
+  .onde__endereco {
+    color: rgba(251, 244, 230, 0.9);
+    margin-bottom: 0.75rem;
+  }
+
+  .onde__linha {
+    color: rgba(251, 244, 230, 0.8);
+  }
+
+  .onde__acoes {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    min-width: 15rem;
+  }
+
+  @media (max-width: 52rem) {
+    .valores,
+    .destaques {
+      grid-template-columns: 1fr;
+    }
+
+    .sobre,
+    .onde {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+</style>
