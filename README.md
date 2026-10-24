@@ -4,6 +4,7 @@
 - **Entidade:** tche-sites
 - **Stack:** astro
 - **Status:** ativo
+- **Repo:** `tchesites/demo-padaria-da-praca` — `git@github.com-tchesites:tchesites/demo-padaria-da-praca.git`
 - **Como rodar:** `npm install` e depois `npm run dev` (http://localhost:4321)
 
 ## Sobre
@@ -38,6 +39,10 @@ horário e telefone são fictícios.
 
 ## Deploy
 
-**Pendente** (Task 7 do plano): publicar em host gratuito. URL prevista
-`https://padaria-da-praca.vercel.app` (confirmar no deploy). O rodapé traz o
-aviso "Projeto demonstrativo — desenvolvido pela Tchê Sites".
+**Pendente.** Falta publicar em host gratuito. URL prevista
+`https://padaria-da-praca.vercel.app` — o projeto na Vercel se chama
+`padaria-da-praca` (sem o prefixo `demo-` do repo), para a URL ficar limpa.
+
+O nome do repositório segue a convenção de `projetos\README.md`: `demo-` marca
+cliente fictício. O rodapé traz o aviso "Projeto demonstrativo — desenvolvido
+pela Tchê Sites".
