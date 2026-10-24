@@ -44,9 +44,9 @@ push em `main` roda `npm ci` + `astro build` e publica o artefato. Deploy por
 branch exigiria commitar `dist/` numa branch `gh-pages` — build no histórico,
 fora do código. Por isso Actions.
 
-- **URL:** `https://tchesites.github.io/demo-padaria-da-praca/`
-- **Status:** workflow pronto; falta criar o repositório em `tchesites` e ligar
-  o Pages em **Settings → Pages → Source = GitHub Actions**.
+- **URL:** <https://tchesites.github.io/demo-padaria-da-praca/> — no ar.
+- **Status:** publicado. Pages em *Settings → Pages → Source = GitHub Actions*;
+  cada push em `main` gera um novo deploy.
 - O subcaminho é o nome do repositório. `astro.config.mjs` fixa `site` + `base`,
   e **todo link interno passa por `url()` de `src\utils\url.js`** — um
   `href="/x/"` cru funcionaria local e quebraria no Pages.
