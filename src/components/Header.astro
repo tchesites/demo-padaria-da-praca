@@ -1,20 +1,25 @@
 ---
 import WhatsAppButton from './WhatsAppButton.astro';
 import { negocio } from '../data/negocio.js';
+import { url } from '../utils/url.js';
 
 const links = [
-  { href: '/', label: 'Início' },
-  { href: '/cardapio/', label: 'Cardápio' },
-  { href: '/sobre/', label: 'Sobre' },
-  { href: '/contato/', label: 'Contato' },
+  { href: url('/'), label: 'Início' },
+  { href: url('/cardapio/'), label: 'Cardápio' },
+  { href: url('/sobre/'), label: 'Sobre' },
+  { href: url('/contato/'), label: 'Contato' },
 ];
 
 const atual = Astro.url.pathname;
+// A home chega como `/base` (sem barra final) e os links como `/base/`.
+// Comparar sem a barra final evita perder o estado ativo do "Início".
+const semBarra = (p) => p.replace(/\/+$/, '') || '/';
+const isAtivo = (href) => semBarra(atual) === semBarra(href);
 ---
 
 <header class="header">
   <div class="container header__inner">
-    <a href="/" class="brand" aria-label={`${negocio.nome} — página inicial`}>
+    <a href={url('/')} class="brand" aria-label={`${negocio.nome} — página inicial`}>
       <span class="brand__mark" aria-hidden="true">🥖</span>
       <span class="brand__name">{negocio.nome}</span>
     </a>
@@ -25,8 +30,8 @@ const atual = Astro.url.pathname;
           <li>
             <a
               href={l.href}
-              class:list={['nav__link', { 'is-active': atual === l.href }]}
-              aria-current={atual === l.href ? 'page' : undefined}
+              class:list={['nav__link', { 'is-active': isAtivo(l.href) }]}
+              aria-current={isAtivo(l.href) ? 'page' : undefined}
             >
               {l.label}
             </a>

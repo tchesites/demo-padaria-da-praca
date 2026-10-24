@@ -4,6 +4,7 @@ import Section from '../components/Section.astro';
 import WhatsAppButton from '../components/WhatsAppButton.astro';
 import { negocio } from '../data/negocio.js';
 import { destaques, precoBRL } from '../data/cardapio.js';
+import { url } from '../utils/url.js';
 
 const valores = [
   {
@@ -32,7 +33,7 @@ const valores = [
       </p>
       <div class="hero__actions">
         <WhatsAppButton label="Pedir pelo WhatsApp" />
-        <a class="btn btn--ghost hero__ghost" href="/cardapio/">Ver o cardápio</a>
+        <a class="btn btn--ghost hero__ghost" href={url('/cardapio/')}>Ver o cardápio</a>
       </div>
     </div>
   </Section>
@@ -61,7 +62,7 @@ const valores = [
           verdade: massa de véspera, forno quente e aquele cheiro que faz a rua
           parar. Todo dia a mesma rotina, com o mesmo cuidado.
         </p>
-        <a class="btn btn--ghost hero__ghost" href="/sobre/">Conheça a história</a>
+        <a class="btn btn--ghost hero__ghost" href={url('/sobre/')}>Conheça a história</a>
       </div>
       <ul class="sobre__lista">
         {negocio.horarios.map((h) => (
@@ -95,7 +96,7 @@ const valores = [
       ))}
     </div>
     <div class="destaques__cta">
-      <a class="btn btn--solid" href="/cardapio/">Ver cardápio completo</a>
+      <a class="btn btn--solid" href={url('/cardapio/')}>Ver cardápio completo</a>
     </div>
   </Section>
 
@@ -112,7 +113,7 @@ const valores = [
       </div>
       <div class="onde__acoes">
         <WhatsAppButton label="Fazer um pedido" />
-        <a class="btn btn--ghost hero__ghost" href="/contato/">Falar com a gente</a>
+        <a class="btn btn--ghost hero__ghost" href={url('/contato/')}>Falar com a gente</a>
       </div>
     </div>
   </Section>

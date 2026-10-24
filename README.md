@@ -39,9 +39,20 @@ horário e telefone são fictícios.
 
 ## Deploy
 
-**Pendente.** Falta publicar em host gratuito. URL prevista
-`https://padaria-da-praca.vercel.app` — o projeto na Vercel se chama
-`padaria-da-praca` (sem o prefixo `demo-` do repo), para a URL ficar limpa.
+**GitHub Pages**, por **GitHub Actions** (`.github\workflows\deploy.yml`): cada
+push em `main` roda `npm ci` + `astro build` e publica o artefato. Deploy por
+branch exigiria commitar `dist/` numa branch `gh-pages` — build no histórico,
+fora do código. Por isso Actions.
+
+- **URL:** `https://tchesites.github.io/demo-padaria-da-praca/`
+- **Status:** workflow pronto; falta criar o repositório em `tchesites` e ligar
+  o Pages em **Settings → Pages → Source = GitHub Actions**.
+- O subcaminho é o nome do repositório. `astro.config.mjs` fixa `site` + `base`,
+  e **todo link interno passa por `url()` de `src\utils\url.js`** — um
+  `href="/x/"` cru funcionaria local e quebraria no Pages.
+- **Local:** `npm run dev` serve em `http://localhost:4321/demo-padaria-da-praca/`.
+  A raiz `/` responde 404 de propósito, para o dev percorrer o mesmo caminho da
+  produção.
 
 O nome do repositório segue a convenção de `projetos\README.md`: `demo-` marca
 cliente fictício. O rodapé traz o aviso "Projeto demonstrativo — desenvolvido
